@@ -1,17 +1,26 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tsconfigPaths from "vite-tsconfig-paths";
-import svgrPlugin from "vite-plugin-svgr";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tsconfigPaths from 'vite-tsconfig-paths'
+import svgrPlugin from 'vite-plugin-svgr'
 
 export default defineConfig({
   plugins: [react(), tsconfigPaths(), svgrPlugin()],
   server: {
     port: 3000,
   },
-  envPrefix: "APP_",
+  optimizeDeps: {
+    esbuildOptions: {
+      define: {
+        global: 'globalThis',
+      },
+    },
+  },
+
+  envPrefix: 'APP_',
+  base: '',
   build: {
     sourcemap: true,
-    outDir: "build",
-    manifest: "manifest.json",
+    outDir: 'build',
+    manifest: 'manifest.json',
   },
-});
+})

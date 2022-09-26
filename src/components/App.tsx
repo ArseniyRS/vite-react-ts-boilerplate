@@ -1,7 +1,8 @@
 import React from "react";
 import "styles/global.scss";
+
 console.log(import.meta.env.APP_KEY);
-const App: React.FC = () => {
+function App() {
   return (
     <div className="wrapper">
       <h1>
@@ -28,5 +29,6 @@ const App: React.FC = () => {
       </a>
     </div>
   );
-};
+}
+
 export default App;
