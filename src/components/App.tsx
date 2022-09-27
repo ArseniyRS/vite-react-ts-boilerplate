@@ -1,7 +1,7 @@
 import React from "react";
-import "styles/global.scss";
+import "~/styles/global.scss";
 
-console.log(import.meta.env.APP_KEY);
+console.log(process.env.APP_KEY);
 function App() {
   return (
     <div className="wrapper">
