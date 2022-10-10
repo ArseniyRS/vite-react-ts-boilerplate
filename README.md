@@ -71,7 +71,7 @@ If you can't or don't want to use `docker` you can use the default method for st
 - **package.json** - Npm configuration file
 - **docker-compose.dev.yml** - docker-compose config for development
 - **.eslintrc** - ESLint config
-- **.perttierc** - Perttier config
+- **.prettierrc** - Perttier config
 - **.stylelintrc** - Stylelint config
 
 
