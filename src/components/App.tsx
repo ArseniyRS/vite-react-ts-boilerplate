@@ -6,13 +6,13 @@ function App() {
   return (
     <div className="wrapper">
       <h1>
-        🚀
         <br />
-        Vite
+        V⚡te
       </h1>
       <ul>
         <li>⚛️ React</li>
         <li>📖 Typescript</li>
+        <li>🧪 Jest & React testing library setup</li>
         <li>🔨 Eslint</li>
         <li>💅 Prettier</li>
         <li>🔨 Stylelint</li>
@@ -21,7 +21,7 @@ function App() {
       </ul>
       <p>Don&apos;t forget to install eslint extentions to your IDE</p>
       <a
-        href="https://github.com/ArseniyRs/react-webpack-boilerplate"
+        href="https://github.com/ArseniyRS/vite-react-ts-boilerplate"
         target="_blank"
         rel="noreferrer"
       >
