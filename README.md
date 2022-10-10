@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-OK. It works! https://react-webpack-boilerplate-psi.vercel.app/
+>OK. It works! https://vite-react-ts-boilerplate.vercel.app/
 ## Introduction
 Boilerplate is a starter kit for quick development start, which allows you to
 save time on routine project setup and start developing right away.
@@ -10,6 +10,7 @@ save time on routine project setup and start developing right away.
 ## Core features
 - React + RTK
 - Typescript settings
+- Jest + React testing library setup
 - Clean code with `ESLint` + `Prettier` + `Stylelint`
 - Dockerization of app
 - SVG file as Component by `Svgr`
@@ -22,6 +23,8 @@ save time on routine project setup and start developing right away.
 * [React-use](https://github.com/streamich/react-use)
 * [Redux-tool-kit(RTK)](https://redux-toolkit.js.org/)
 * [Axios](https://github.com/axios/axios)
+* [Jest](https://jestjs.io/docs/getting-started)
+* [React testing library](https://testing-library.com/docs/react-testing-library/intro/)
 * [ESlint](https://eslint.org/)
 * [Prettier](https://prettier.io/)
 * [Stylelint](https://stylelint.io/)
@@ -31,10 +34,11 @@ save time on routine project setup and start developing right away.
 2. [Project Structure](#project-structure)
 2. [CLI creating](#cli-creating)
 3. [Hooks](#hooks)
-4. [Formatting](#formatting)
-5. [Styles](#styles)
-6. [Environments](#environment-variables)
-6. [Import aliases](#import-aliases)
+4. [Tests](#testing)
+5. [Formatting](#formatting)
+6. [Styles](#styles)
+7. [Environments](#environment-variables)
+8. [Import aliases](#import-aliases)
 
 # First start
 ### Using docker and docker-compose
@@ -60,17 +64,18 @@ If you can't or don't want to use `docker` you can use the default method for st
 ```bash
   yarn start # or npm start
 ```
-The application is available on [http://localhost:3000](http://localhost:3000)
+>The application is available on [http://localhost:3000](http://localhost:3000)
 
 # Project structure
 - **README.md** - Project description
 - **package.json** - Npm configuration file
 - **docker-compose.dev.yml** - docker-compose config for development
 - **.eslintrc** - ESLint config
+- **.perttierc** - Perttier config
 - **.stylelintrc** - Stylelint config
 
 
-- **public/shared** - Folder with static files
+- **public/** - Folder with static files
 - **scripts** - Helpful scripts(CLI)
 - **docker** - Dockerfiles' folder
 - **docker/Dockerfile.dev** - config for dev mode
@@ -89,7 +94,7 @@ The application is available on [http://localhost:3000](http://localhost:3000)
 - **src/pages** - Pages folder(routes)
 - **src/hocs** - Higher Order Components (HOCs)
 - **src/hooks** - React-hooks
-- **src/index.tsx** - Core application file(entry point)
+- **src/main.tsx** - Core application file(entry point)
 - **src/utils** - Utils folder(additional small reusable functions)
 - **src/store** - Store folder
 - **src/styles** - Global styles folder
@@ -132,12 +137,31 @@ To work with environment variables, we need to use some config files:
 * `.env.staging` - for variables of staging
 * `.env.production` - for variables of prod
 ```js
-  import.meta.env.APP_SOME_KEY # for use env vars
+  process.env.APP_[KEY] # for use env vars
 ```
-You could change env vars prefix in vite.config.ts file.
+>import.meta.env changed to process.env for test setup*
 
-[more about VITE Env vars](https://vitejs.dev/guide/env-and-mode.html)
+>You could change env vars prefix in vite.config.ts file.
 
+>[more about VITE Env vars](https://vitejs.dev/guide/env-and-mode.html)
+# Testing
+Tests helps to write true code. They force you to decompose your code and check its validity.
+
+For run all test in your project use:
+```bash
+  npm run test
+  #yarn test
+```
+
+For run just one test then use:
+
+```bash
+  npm run test [filename] # npm run test App.test.tsx
+  #yarn test [filename]
+```
+>[more about Jest](https://jestjs.io/docs/getting-started)
+
+>[more about React testing library](https://testing-library.com/docs/react-testing-library/example-intro)
 # Formatting
 Linters are to keep code clean. They prevent shitcode from getting into a repository.
 ## ESLint
@@ -165,24 +189,17 @@ To lint scss code use:
 # Import aliases
 We could define the alias components so that instead of having to do stuff like this:
 ```js
-import MyComponent from '../../../../components/MyComponent'
+  import MyComponent from '../../../../components/MyComponent'
 ```
 We could do just do:
 ```js
-import MyComponent from 'components/MyComponent'
+  import MyComponent from '~/components/MyComponent'
 ```
 All aliases:
 ```json
-      "~": ["src/*"],
-      "store": ["src/store/*"],
-      "assets": ["src/assets/*"],
-      "features": ["src/features/*"],
-      "pages": ["src/pages/*"],
-      "services": ["src/services/*"],
-      "components": ["src/components/*"],
-      "styles": ["src/styles/*"]
+  "~/*": ["./src/*"]
 ```
-**You could change or add new aliases to tsconfig.json**
+>You could change or add new aliases to tsconfig.json
 
 ***Cheatsheets***
 - [React + TypeScript](https://github.com/typescript-cheatsheets/react)
@@ -190,7 +207,7 @@ All aliases:
 - [A collection of cheatsheets](https://devhints.io/typescript)
 
 
-#### Useful VSCode extensions
+***Useful VSCode extensions***
 * `Path Intellisense` - intelliSense for imports
 * `ESLint` - lint highlight
 * `Stylelint` - lint highlight
